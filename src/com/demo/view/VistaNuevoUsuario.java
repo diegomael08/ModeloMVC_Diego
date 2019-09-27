@@ -197,7 +197,7 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTipoActionPerformed
 
     private void jRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarActionPerformed
-        VistaLogin login = new VistaLogin();
+
         long band;
         String id,nombres,apellidos,email,clave,tipo;
         
@@ -212,13 +212,11 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, "Registrado");
         this.setVisible(false);
-        login.setVisible(true);
             
     }//GEN-LAST:event_jRegistrarActionPerformed
 
     private void jCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarActionPerformed
-        VistaLogin login = new VistaLogin();
-        login.setVisible(true);
+
         this.setVisible(false);  
     }//GEN-LAST:event_jCancelarActionPerformed
 

@@ -5,6 +5,7 @@
  */
 package com.demo.view;
 
+import com.demo.controller.ControllerLogin;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author Diego
  */
 public class VistaActualizarContra extends javax.swing.JFrame {
-    
+    ControllerLogin cLogin;
     /**
      * Creates new form VistaActualizarContra
      */
     public VistaActualizarContra() {
         initComponents();
+        cLogin = new ControllerLogin();
     }
 
     /**
@@ -36,7 +38,7 @@ public class VistaActualizarContra extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jReContraseñaNeuva = new javax.swing.JPasswordField();
         jContraseñaNueva = new javax.swing.JPasswordField();
-        jUsuario = new javax.swing.JTextField();
+        jEmail = new javax.swing.JTextField();
         jActualizar = new javax.swing.JButton();
         jCancelar = new javax.swing.JButton();
 
@@ -71,7 +73,7 @@ public class VistaActualizarContra extends javax.swing.JFrame {
             }
         });
 
-        jUsuario.setMinimumSize(new java.awt.Dimension(6, 23));
+        jEmail.setMinimumSize(new java.awt.Dimension(6, 23));
 
         jActualizar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jActualizar.setText("Actualizar");
@@ -110,7 +112,7 @@ public class VistaActualizarContra extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jReContraseñaNeuva, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                             .addComponent(jContraseñaNueva)
-                            .addComponent(jUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jActualizar)
@@ -128,7 +130,7 @@ public class VistaActualizarContra extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jContraseñaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,15 +163,18 @@ public class VistaActualizarContra extends javax.swing.JFrame {
     }//GEN-LAST:event_jContraseñaNuevaActionPerformed
 
     private void jActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarActionPerformed
-        VistaLogin login = new VistaLogin();
-        JOptionPane.showMessageDialog(null, "Actualizado");
-        login.setVisible(true);  
+        long band;
+        String email,clave;
+        email = jEmail.getText();
+        clave = new String(jContraseñaNueva.getPassword());
+        
+        band = this.cLogin.RecuperarClave(email,clave);    
+        JOptionPane.showMessageDialog(null, "Actualizado"); 
         this.setVisible(false); 
     }//GEN-LAST:event_jActualizarActionPerformed
 
     private void jCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarActionPerformed
-        VistaLogin login = new VistaLogin();
-        login.setVisible(true);
+
         this.setVisible(false);
     }//GEN-LAST:event_jCancelarActionPerformed
 
@@ -212,12 +217,12 @@ public class VistaActualizarContra extends javax.swing.JFrame {
     private javax.swing.JButton jActualizar;
     private javax.swing.JButton jCancelar;
     private javax.swing.JPasswordField jContraseñaNueva;
+    private javax.swing.JTextField jEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField jReContraseñaNeuva;
-    private javax.swing.JTextField jUsuario;
     // End of variables declaration//GEN-END:variables
 }
