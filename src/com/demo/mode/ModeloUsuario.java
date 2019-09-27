@@ -22,15 +22,13 @@ public class ModeloUsuario extends Model {
     public static File ruta = new File("usuarios.txt");
     
     public static boolean logIn(Usuario user){
-        /*
-        boolean band= false;   
+        /* 
         if(user.getEmail().compareTo("admin@gmail.com") == 0 &&
                 user.getClave().compareTo("123456") == 0){
             band = true;
         }else{
             band = false;
         }
-        
         return band;
         */
         boolean band = false;
@@ -38,10 +36,10 @@ public class ModeloUsuario extends Model {
             FileReader fr = new FileReader(ruta);
             BufferedReader br = new BufferedReader(fr);
             String linea;
-            String[] parts;
+            String[] datos;
             while ((linea = br.readLine()) != null) {
-                parts = linea.split(";");//separo los datos por cada linea
-                if (parts[1].compareTo(user.getEmail()) == 0 && parts[2].compareTo(user.getClave()) == 0) {
+                datos = linea.split(";");//separo los datos por cada linea
+                if (datos[1].compareTo(user.getEmail()) == 0 && datos[2].compareTo(user.getClave()) == 0) {
                     band = true;
                 }
             }
