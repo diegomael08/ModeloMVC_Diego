@@ -46,7 +46,7 @@ public class ModeloUsuario extends Model {
             br.close();
             fr.close();
         } catch (Exception e) {
-            System.out.println("Error al leer: " + e);
+            JOptionPane.showMessageDialog(null,"error: "+e );
         }
         return band;
     }
@@ -76,5 +76,12 @@ public class ModeloUsuario extends Model {
         }
         
         return band;
+    }
+    
+    public static long recuperarClave(Usuario user){
+        long band = 0;
+        
+        return band;
+        
     }
 }

@@ -42,8 +42,15 @@ public class ControllerLogin extends Controller {
         return status;   
     }
     
-    public long RecuperarClave(){
+    public long RecuperarClave(String email, String clave){
         long status = 0;
+        try{
+            Usuario user = new Usuario(email, clave);
+            status = ModeloUsuario.recuperarClave(user);
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Error en los datos");
+        }
         
         return status;
     }
