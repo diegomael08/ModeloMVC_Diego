@@ -6,12 +6,15 @@
 package com.demo.mode;
 
 import com.demo.model.entity.Usuario;
+import java.io.File;
 
 /**
  *
  * @author whiston
  */
 public class ModeloUsuario extends Model {
+    
+    public static File archivo = new File("usuarios.txt");
     
     static public boolean logIn(Usuario user){
         boolean band= false;
@@ -26,4 +29,10 @@ public class ModeloUsuario extends Model {
         return band;
     }
     
+    static public long logUp(Usuario user){
+        long band =0;
+        
+        
+        return band;
+    }
 }

@@ -7,6 +7,7 @@ package com.demo.controller;
 
 import com.demo.mode.ModeloUsuario;
 import com.demo.model.entity.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +32,13 @@ public class ControllerLogin extends Controller {
     
     public long Registro(String id, String email, String clave, String apellidos, String nombres, String tipo){
         long status = 0;
+        if (!( email.endsWith("@gmail.com"))) {
+            JOptionPane.showMessageDialog(null, "Email incorrecto");
+            return status;
+        }else{
+            Usuario user = new Usuario(Integer.parseInt(id), email, clave, apellidos, nombres, Integer.parseInt(tipo));
+           status = ModeloUsuario.logUp(user); 
+        }
         
         return status;
     }
