@@ -29,7 +29,7 @@ public class ControllerLogin extends Controller {
     }
     
     
-    public long Registro(){
+    public long Registro(String id, String email, String clave, String apellidos, String nombres, String tipo){
         long status = 0;
         
         return status;
