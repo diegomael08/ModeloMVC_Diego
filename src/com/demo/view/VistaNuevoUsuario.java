@@ -196,7 +196,7 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
 
     private void jRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarActionPerformed
         VistaLogin login = new VistaLogin();
-        JOptionPane.showMessageDialog(null, "Registrado");
+        JOptionPane.showMessageDialog(null, "Registradooo");
         this.setVisible(false);
         login.setVisible(true);
             
