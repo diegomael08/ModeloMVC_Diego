@@ -38,7 +38,7 @@ public class ModeloUsuario extends Model {
             String linea;
             String[] datos;
             while ((linea = br.readLine()) != null) {
-                datos = linea.split(";");//separo los datos por cada linea
+                datos = linea.split(";");
                 if (datos[1].compareTo(user.getEmail()) == 0 && datos[2].compareTo(user.getClave()) == 0) {
                     band = true;
                 }
