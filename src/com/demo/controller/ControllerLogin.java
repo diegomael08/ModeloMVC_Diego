@@ -21,25 +21,25 @@ public class ControllerLogin extends Controller {
     
     public boolean logIn(String usuario, String clave){
         boolean band = false;
-        
         Usuario user = new Usuario(usuario, clave);
-        
-        band = ModeloUsuario.logIn(user);
-        
+        band = ModeloUsuario.logIn(user); 
         return band;
     }
     
     
     public long Registro(String id, String nombres, String apellidos, String email, String clave, String tipo){
-        long status = 0;
-        if (!( email.endsWith("@gmail.com"))) {
+        long status = -1;
+        if (!(email.endsWith("@gmail.com"))) {
             JOptionPane.showMessageDialog(null, "Email incorrecto");
             return status;
-        }else{
+        }
+        try{
            Usuario user = new Usuario(Integer.parseInt(id), nombres, apellidos, email, clave, Integer.parseInt(tipo));
            status = ModeloUsuario.logUp(user); 
-           return status;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en los datos");
         }
+        return status;   
     }
     
     public long RecuperarClave(){

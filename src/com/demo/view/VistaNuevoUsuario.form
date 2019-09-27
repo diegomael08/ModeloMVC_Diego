@@ -67,8 +67,8 @@
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jTipo" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jPasswordField1" min="-2" pref="137" max="-2" attributes="0"/>
-                                      <Component id="jTextField5" min="-2" pref="220" max="-2" attributes="0"/>
+                                      <Component id="jclave" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="jEmail" min="-2" pref="220" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -107,13 +107,13 @@
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jEmail" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jPasswordField1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="jclave" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -200,7 +200,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jApellidos">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="jEmail">
     </Component>
     <Component class="javax.swing.JComboBox" name="jTipo">
       <Properties>
@@ -229,7 +229,7 @@
         <Property name="text" type="java.lang.String" value="EMAIL:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+    <Component class="javax.swing.JPasswordField" name="jclave">
     </Component>
     <Component class="javax.swing.JButton" name="jCancelar">
       <Properties>

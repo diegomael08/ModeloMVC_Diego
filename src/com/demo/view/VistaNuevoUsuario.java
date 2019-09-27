@@ -5,6 +5,7 @@
  */
 package com.demo.view;
 
+import com.demo.controller.ControllerLogin;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author Diego
  */
 public class VistaNuevoUsuario extends javax.swing.JFrame {
-   
+    ControllerLogin cLogin;
     /**
      * Creates new form VistaNuevoUsuario
      */
     public VistaNuevoUsuario() {
         initComponents();
+        cLogin = new ControllerLogin();
     }
 
     /**
@@ -39,10 +41,10 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jNombre = new javax.swing.JTextField();
         jApellidos = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jEmail = new javax.swing.JTextField();
         jTipo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jclave = new javax.swing.JPasswordField();
         jCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,8 +140,8 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
                                             .addGap(68, 68, 68)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jclave, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jRegistrar)
@@ -166,12 +168,12 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
                     .addComponent(jApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jclave, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,6 +198,18 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
 
     private void jRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarActionPerformed
         VistaLogin login = new VistaLogin();
+        long band;
+        String id,nombres,apellidos,email,clave,tipo;
+        
+        id=jId.getText();
+        nombres = jNombre.getText();
+        apellidos = jApellidos.getText();
+        email = jEmail.getText();
+        clave = new String(jclave.getPassword());
+        tipo = Integer.toString(jTipo.getSelectedIndex());
+        
+        band = this.cLogin.Registro(id, nombres, apellidos, email, clave, tipo);
+        
         JOptionPane.showMessageDialog(null, "Registrado");
         this.setVisible(false);
         login.setVisible(true);
@@ -246,6 +260,7 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jApellidos;
     private javax.swing.JButton jCancelar;
+    private javax.swing.JTextField jEmail;
     private javax.swing.JTextField jId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -255,9 +270,8 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jNombre;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton jRegistrar;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JComboBox<String> jTipo;
+    private javax.swing.JPasswordField jclave;
     // End of variables declaration//GEN-END:variables
 }
