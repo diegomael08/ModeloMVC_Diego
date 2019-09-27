@@ -14,7 +14,7 @@ import java.io.File;
  */
 public class ModeloUsuario extends Model {
     
-    public static File archivo = new File("usuarios.txt");
+    public static File ruta = new File("usuarios.txt");
     
     static public boolean logIn(Usuario user){
         boolean band= false;

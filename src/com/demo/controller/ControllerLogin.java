@@ -30,17 +30,16 @@ public class ControllerLogin extends Controller {
     }
     
     
-    public long Registro(String id, String email, String clave, String apellidos, String nombres, String tipo){
+    public long Registro(String id, String nombres, String apellidos, String email, String clave, String tipo){
         long status = 0;
         if (!( email.endsWith("@gmail.com"))) {
             JOptionPane.showMessageDialog(null, "Email incorrecto");
             return status;
         }else{
-            Usuario user = new Usuario(Integer.parseInt(id), email, clave, apellidos, nombres, Integer.parseInt(tipo));
+           Usuario user = new Usuario(Integer.parseInt(id), nombres, apellidos, email, clave, Integer.parseInt(tipo));
            status = ModeloUsuario.logUp(user); 
+           return status;
         }
-        
-        return status;
     }
     
     public long RecuperarClave(){
