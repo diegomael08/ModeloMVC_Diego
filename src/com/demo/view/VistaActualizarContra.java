@@ -168,8 +168,18 @@ public class VistaActualizarContra extends javax.swing.JFrame {
         email = jEmail.getText();
         clave = new String(jContraseñaNueva.getPassword());
         
-        band = this.cLogin.RecuperarClave(email,clave);    
-        JOptionPane.showMessageDialog(null, "Actualizado"); 
+        band = this.cLogin.RecuperarClave(email,clave);
+        switch((int)band){
+            case 0:
+                JOptionPane.showMessageDialog(null, "Usuario no existe"); 
+            break;
+            case 1:
+                JOptionPane.showMessageDialog(this, "Verifique clave");
+            break;
+            case 2:
+                JOptionPane.showMessageDialog(this, "Contraseña Actualizada");
+            break;    
+        }
         this.setVisible(false); 
     }//GEN-LAST:event_jActualizarActionPerformed
 

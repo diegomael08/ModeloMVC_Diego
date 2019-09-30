@@ -48,7 +48,6 @@ public class ControllerLogin extends Controller {
             Usuario user = new Usuario(email, clave);
             status = ModeloUsuario.recuperarClave(user);
         }catch(Exception e){
-            
             JOptionPane.showMessageDialog(null, "Error en los datos");
         }
         

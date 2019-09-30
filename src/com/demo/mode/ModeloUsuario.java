@@ -6,11 +6,7 @@
 package com.demo.mode;
 
 import com.demo.model.entity.Usuario;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,7 +35,7 @@ public class ModeloUsuario extends Model {
             String[] datos;
             while ((linea = br.readLine()) != null) {
                 datos = linea.split(";");
-                if (datos[1].compareTo(user.getEmail()) == 0 && datos[2].compareTo(user.getClave()) == 0) {
+                if (datos[3].compareTo(user.getEmail()) == 0 && datos[4].compareTo(user.getClave()) == 0) {
                     band = true;
                 }
             }
@@ -63,7 +59,7 @@ public class ModeloUsuario extends Model {
             FileWriter fw = new FileWriter(archivo, true);
             PrintWriter pw = new PrintWriter(fw);
             String filatxt = user.getId()+","+user.getNombres() + ","+ 
-                    user.getApellidos() +","+user.getEmail() + ","+  user.getClave() +","+ user.getTipo();
+                    user.getApellidos() +","+user.getEmail() + ","+  user.getClave() +","+ user.getTipo()+";";
             pw.println(filatxt);
             pw.close();
             fw.close();
@@ -93,18 +89,37 @@ public class ModeloUsuario extends Model {
     
     public static long recuperarClave(Usuario user){
         long band = 0;
-        
-        try{
-            FileReader fr = new FileReader("usuarios.txt");
+        String texto ="";
+        boolean cond=false;
+        try {
+            FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
-            FileWriter fw = new FileWriter("usuarios.txt");
-            PrintWriter pw = new PrintWriter(fw);
-            
-        }catch(Exception e){
-            
+            String temporal;
+            String[] parts;
+            while ((temporal = br.readLine()) != null) {
+                parts = temporal.split(",");
+                if (parts[3].equals(user.getEmail())) {
+                    if (user.getClave().equals("")) {
+                        return 1;
+                    } else {
+                        temporal = user.getEmail() + "," + user.getClave() +";"+"\n";
+                        texto = texto + temporal;
+                        cond = true;
+                    }
+                } else {
+                    texto = texto + temporal+ "\n";
+                }
+            }
+            if (cond == true) {
+                PrintWriter nContraseña = new PrintWriter(archivo);
+                nContraseña.println(texto);
+                band = 2;
+                nContraseña.close();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error: "+e);
         }
         
         return band;
-        
     }
 }
