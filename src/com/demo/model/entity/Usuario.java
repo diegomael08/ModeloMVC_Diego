@@ -16,12 +16,12 @@ public class Usuario {
     private String clave;
     private String apellidos;
     private String nombres;
-    private int tipo;
+    private String tipo;
 
     public Usuario() {
     }
 
-    public Usuario(long id, String email, String clave, String apellidos, String nombres, int tipo) {
+    public Usuario(long id, String nombres, String apellidos, String email, String clave, String tipo) {
         this.id = id;
         this.email = email;
         this.clave = clave;
@@ -75,11 +75,11 @@ public class Usuario {
         this.nombres = nombres;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
     

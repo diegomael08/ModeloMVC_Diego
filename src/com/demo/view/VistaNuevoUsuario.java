@@ -206,7 +206,7 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
         apellidos = jApellidos.getText();
         email = jEmail.getText();
         clave = new String(jclave.getPassword());
-        tipo = Integer.toString(jTipo.getSelectedIndex());
+        tipo = jTipo.getSelectedItem().toString();
         
         band = this.cLogin.Registro(id, nombres, apellidos, email, clave, tipo);
         

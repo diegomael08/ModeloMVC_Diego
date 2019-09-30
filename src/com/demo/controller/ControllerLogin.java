@@ -34,7 +34,7 @@ public class ControllerLogin extends Controller {
             return status;
         }
         try{
-           Usuario user = new Usuario(Integer.parseInt(id), nombres, apellidos, email, clave, Integer.parseInt(tipo));
+           Usuario user = new Usuario(Integer.parseInt(id), nombres, apellidos, email, clave, tipo);
            status = ModeloUsuario.logUp(user); 
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en los datos");

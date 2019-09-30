@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ModeloUsuario extends Model {
     
-    public static File ruta = new File("usuarios.txt");
+    public static File archivo = new File("usuarios.txt");
     
     public static boolean logIn(Usuario user){
         /* 
@@ -33,7 +33,7 @@ public class ModeloUsuario extends Model {
         */
         boolean band = false;
         try {
-            FileReader fr = new FileReader(ruta);
+            FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
             String linea;
             String[] datos;
@@ -54,32 +54,55 @@ public class ModeloUsuario extends Model {
     public static long logUp(Usuario user){
         long band =0;
         String linea;
-        try{
-            FileReader fr = new FileReader(ruta);
-            BufferedReader br = new BufferedReader(fr);
-            String[] datos;
-            while((linea = br.readLine())!=null){
-                datos =linea.split(";");  
+        if (!archivo.exists()) {
+            try{
+                archivo.createNewFile();
+            }catch(Exception e){     
             }
-            FileWriter fw = new FileWriter(ruta);
+            try{
+            FileWriter fw = new FileWriter(archivo, true);
             PrintWriter pw = new PrintWriter(fw);
-            String filatxt = user.getEmail() + ","+ user.getNombres() + ","+ 
-                    user.getApellidos() +","+ user.getClave() +","+ user.getTipo();
+            String filatxt = user.getId()+","+user.getNombres() + ","+ 
+                    user.getApellidos() +","+user.getEmail() + ","+  user.getClave() +","+ user.getTipo();
+            pw.println(filatxt);
+            pw.close();
+            fw.close();
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: "+e);
+        }
+            
+        }else{
+           try{
+            FileWriter fw = new FileWriter(archivo, true);
+            PrintWriter pw = new PrintWriter(fw);
+            String filatxt = user.getId()+","+user.getNombres() + ","+ 
+                    user.getApellidos() +","+user.getEmail() + ","+  user.getClave() +","+ user.getTipo();
             pw.println(filatxt);
             
             pw.close();
             fw.close();
-            br.close();
-            fr.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: "+e);
         }
         
-        return band;
+        
+        }
+        return band; 
     }
     
     public static long recuperarClave(Usuario user){
         long band = 0;
+        
+        try{
+            FileReader fr = new FileReader("usuarios.txt");
+            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter("usuarios.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            
+        }catch(Exception e){
+            
+        }
         
         return band;
         
